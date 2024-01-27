@@ -3,6 +3,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa6"
 import { VideoType } from "../types/types"
 import Thumbnail from "./Thumbnail"
 import { fetchData } from "../utils/fetchData"
+import { formatString } from "../utils/formatString"
 
 const Row = ({collection_name}: {collection_name: string}) => {
    const [data, setData] = useState<VideoType[]>([])
@@ -19,19 +20,7 @@ const Row = ({collection_name}: {collection_name: string}) => {
          rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" })
       }
    }
-   // const fetchData = async () => {
-   //    const querySnapshot = await getDocs(collection(db, "new_releases"))
-   //    const list: VideoType[] = querySnapshot.docs.map((doc) => {
-   //       const data = doc.data()
-   //       return {
-   //          id: doc.id,
-   //          name: data.name,
-   //          url: data.url,
-   //          genres: data.genres,
-   //       }
-   //    })
-   //    setData(list)
-   // }
+
    useEffect(() => {
       const fetchVideos = async () => {
          const response = await fetchData(collection_name)
@@ -39,14 +28,15 @@ const Row = ({collection_name}: {collection_name: string}) => {
       }
       fetchVideos()
    }, [])
+
    return (
       <div className="space-y-0.5 md:space-y-2">
-         <h2 className="w-56 cursor-pointer text-sm md:text-xl font-semibold text-[#e5e5e5] transition duration-200 hover:text-white">
-            New Releases
+         <h2 className="w-56 cursor-pointer text-sm md:text-xl font-semibold text-[#e5e5e5] transition duration-200 hover:text-white capitalize">
+            {formatString(collection_name)}
          </h2>
          <div className="group/row relative md:-ml-5">
             <FaChevronLeft
-               className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group/row-hover:opacity-100 ${
+               className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover/row:opacity-100 ${
                   !isMoved && "hidden"
                }`}
                onClick={() => handleClick("left")}
@@ -59,10 +49,12 @@ const Row = ({collection_name}: {collection_name: string}) => {
                   <Thumbnail key={crypto.randomUUID()} data={video} />
                ))}
             </div>
-            <FaChevronRight
-               className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group/row-hover:opacity-100"
+            <span
+               className="absolute flex items-center top-0 bottom-0 right-0 z-40 m-auto h-36  opacity-0 transition  group-hover/row:opacity-100 bg-black/[0.5] my-auto"
                onClick={() => handleClick("right")}
-            />
+            >
+               <FaChevronRight className="h-9 w-9 cursor-pointer hover:scale-125" />
+            </span>
          </div>
       </div>
    )

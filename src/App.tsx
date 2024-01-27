@@ -10,9 +10,9 @@ function App() {
          <main className="relative pl-10 pb-12 md:pb-24 overflow-x-hidden">
             <Banner />
             <section className="space-y-5">
+               <Row collection_name="top_movies" />
                <Row collection_name="new_releases" />
-               <Row collection_name="new_releases" />
-               <Row collection_name="new_releases" />
+               <Row collection_name="casual_viewing" />
             </section>
          </main>
       </div>
