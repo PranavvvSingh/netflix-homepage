@@ -7,7 +7,7 @@ function App() {
    return (
       <div className="relative h-screen bg-gradient-to-b">
          <Header />
-         <main className="relative pl-10 pb-12 md:pb-24 overflow-x-hidden">
+         <main className="relative pl-7 md:pl-10 pe-3.5 md:pe-5 pb-12 md:pb-24 overflow-x-hidden">
             <Banner />
             <section className="space-y-5">
                <Row collection_name="top_movies" />

@@ -4,13 +4,13 @@ import { BsPlayCircle } from "react-icons/bs"
 
 const Thumbnail = ({ data }: { data: VideoType }) => {
    return (
-      <div className="h-36 min-w-[180px] cursor-pointer transition duration-200 ease-out mid:h-40 md:min-w-[250px] hover:scale-[1.3] group">
+      <div className="h-28 min-w-[200px] cursor-pointer transition duration-200 ease-out md:h-36 md:min-w-[250px] hover:scale-[1.26] group">
          <img
             src={data.url}
             className="rounded-sm object-cover md:rounded"
             alt=""
          />
-         
+
          <BsPlayCircle className="hidden group-hover:block absolute top-1/2 left-1/2 -translate-x-[15px] -translate-y-[25px] text-white/[0.7] h-[30px] w-[30px] bg-black/[0.7] shadow-xl shadow-black rounded-full" />
 
          <div className="hidden w-full group-hover:flex flex-col justify-end px-2 py-3 group-hover:absolute -bottom-[1px] bg-gradient-to-t from-black via-black/80 to-transparent h-1/2 text-sm">

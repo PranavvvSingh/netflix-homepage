@@ -8,9 +8,7 @@ import { formatString } from "../utils/formatString"
 const Row = ({collection_name}: {collection_name: string}) => {
    const [data, setData] = useState<VideoType[]>([])
    const rowRef = useRef<HTMLDivElement>(null)
-   const [isMoved, setIsMoved] = useState(false)
    const handleClick = (direction: string) => {
-      setIsMoved(true)
       if (rowRef.current) {
          const { scrollLeft, clientWidth } = rowRef.current
          const scrollTo =
@@ -30,18 +28,16 @@ const Row = ({collection_name}: {collection_name: string}) => {
    }, [])
 
    return (
-      <div className="space-y-0.5">
+      <div>
          <h2 className="w-56 cursor-pointer text-sm md:text-xl font-semibold text-[#e5e5e5] transition duration-200 hover:text-white capitalize">
             {formatString(collection_name)}
          </h2>
-         <div className="group/row relative md:-ml-5">
+         <div className="group/row relative -ml-5">
             <div
-               className={`absolute flex items-center top-0 bottom-0 left-0 z-40 m-auto h-36  opacity-0 transition  group-hover/row:opacity-100 bg-black/[0.5] ${
-                  !isMoved && "hidden"
-               }`}
+               className={`absolute flex items-center top-0 bottom-0 left-0 z-40 m-auto h-28 md:h-36  opacity-0 transition group-hover/row:opacity-100 bg-black/[0.5]`}
                onClick={() => handleClick("left")}
             >
-               <FaChevronLeft className="h-9 w-9 cursor-pointer hover:scale-125" />
+               <FaChevronLeft className="h-9 w-9 cursor-pointer hover:scale-125 transition-all duration-200 ease-out" />
             </div>
 
             <div
@@ -53,10 +49,10 @@ const Row = ({collection_name}: {collection_name: string}) => {
                ))}
             </div>
             <span
-               className="absolute flex items-center top-0 bottom-0 right-0 z-40 m-auto h-36 opacity-0 transition  group-hover/row:opacity-100 bg-black/[0.5]"
+               className="absolute flex items-center top-0 bottom-0 right-0 z-40 m-auto h-28  md:h-36 opacity-0 transition  group-hover/row:opacity-100 bg-black/[0.5]"
                onClick={() => handleClick("right")}
             >
-               <FaChevronRight className="h-9 w-9 cursor-pointer hover:scale-125" />
+               <FaChevronRight className="h-9 w-9 cursor-pointer hover:scale-125 transition-all duration-200" />
             </span>
          </div>
       </div>
