@@ -1,4 +1,5 @@
 import logo from "../assets/netflix.png"
+import avatar from "../assets/avatar.jpg"
 import { IoSearchOutline } from "react-icons/io5"
 import { FaRegBell } from "react-icons/fa"
 import { useEffect, useState } from "react"
@@ -40,6 +41,7 @@ const Header = () => {
          <div className="flex text-2xl gap-5">
             <IoSearchOutline />
             <FaRegBell />
+            <img src={avatar} className="h-6 w-6" alt="" />
          </div>
       </nav>
    )
